@@ -2,6 +2,8 @@ package com.elcprojects.citymanager.controller;
 
 import com.elcprojects.citymanager.domain.City;
 import com.elcprojects.citymanager.service.CityService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class CityController {
     }
 
     @PostMapping
-    public City addCity(@RequestBody City city) {
+    public City addCity(@Valid @RequestBody City city) {
         return cityService.saveCity(city);
     }
 

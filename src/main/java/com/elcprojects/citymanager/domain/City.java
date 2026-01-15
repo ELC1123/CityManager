@@ -1,6 +1,8 @@
 package com.elcprojects.citymanager.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="city")
@@ -19,12 +21,14 @@ public class City {
     private int id;
 
     @Column(name="name")
+    @NotBlank(message = "City Name cannot be empty!")
     private String name;
 
     @Column(name="country")
     private String country;
 
     @Column(name="details")
+    @Size(max = 500, message = "Description is too long!")
     private String details;
 
     public City() {
