@@ -39,6 +39,6 @@ public class TripController {
     @DeleteMapping("/{id}")
     public String deleteTripById(@PathVariable int id) {
         tripService.deleteTripById(id);
-        return "Successfully deleted City ID - " + id;
+        return "Successfully deleted Trip ID - " + id;
     }
 }
