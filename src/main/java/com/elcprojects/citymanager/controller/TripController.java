@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/trips")
 public class TripController {
-    private TripService tripService;
+    private final TripService tripService;
 
     public TripController(TripService tripService) {
         this.tripService = tripService;
