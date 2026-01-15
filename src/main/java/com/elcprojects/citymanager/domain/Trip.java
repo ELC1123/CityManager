@@ -1,10 +1,14 @@
 package com.elcprojects.citymanager.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
 
+@Setter
+@Getter
 @Entity
 @Table(name="trip")
 public class Trip {
@@ -49,54 +53,6 @@ public class Trip {
         this.endDate = endDate;
         this.rating = rating;
         this.personalNotes = personalNotes;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getPersonalNotes() {
-        return personalNotes;
-    }
-
-    public void setPersonalNotes(String personalNotes) {
-        this.personalNotes = personalNotes;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     @Override
