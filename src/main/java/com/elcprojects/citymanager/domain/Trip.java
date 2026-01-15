@@ -1,6 +1,8 @@
 package com.elcprojects.citymanager.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,9 +34,11 @@ public class Trip {
     private City city;
 
     @Column(name="startDate")
+    @NotNull(message = "Start date cannot be empty!")
     private LocalDate startDate;
 
     @Column(name="endDate")
+    @NotNull(message = "End date cannot be empty!")
     private LocalDate endDate;
 
     @Column(name="rating")
