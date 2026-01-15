@@ -3,7 +3,6 @@ package com.elcprojects.citymanager.controller;
 import com.elcprojects.citymanager.domain.City;
 import com.elcprojects.citymanager.service.CityService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class CityController {
     }
 
     @PutMapping("/{id}")
-    public City updateCity(@PathVariable int id, @RequestBody City city) {
+    public City updateCity(@PathVariable int id, @Valid @RequestBody City city) {
         city.setId(id);
         return cityService.saveCity(city);
     }
