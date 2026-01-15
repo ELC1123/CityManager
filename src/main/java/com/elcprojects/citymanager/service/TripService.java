@@ -1,6 +1,8 @@
 package com.elcprojects.citymanager.service;
 
+import com.elcprojects.citymanager.domain.City;
 import com.elcprojects.citymanager.domain.Trip;
+import com.elcprojects.citymanager.repository.CityRepository;
 import com.elcprojects.citymanager.repository.TripRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.Optional;
 @Service
 public class TripService {
     private final TripRepository tripRepository;
+    private final CityRepository cityRepository;
 
-    public TripService(TripRepository tripRepository) {
+    public TripService(TripRepository tripRepository, CityRepository cityRepository) {
         this.tripRepository = tripRepository;
+        this.cityRepository = cityRepository;
     }
 
     public List<Trip> findAll() {
@@ -20,6 +24,10 @@ public class TripService {
     }
 
     public Trip saveTrip(Trip trip) {
+        if(trip.getCity() != null && trip.getCity().getId() != 0) {
+            City realCity = cityRepository.findById(trip.getCity().getId()).orElse(null);
+            trip.setCity(realCity);
+        }
         return tripRepository.save(trip);
     }
 
