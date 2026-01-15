@@ -2,6 +2,7 @@ package com.elcprojects.citymanager.controller;
 
 import com.elcprojects.citymanager.domain.Trip;
 import com.elcprojects.citymanager.service.TripService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,13 @@ public class TripController {
     }
 
     @GetMapping("/{id}")
-    public Trip findTripById(@PathVariable int id) {
-        return tripService.findTripById(id);
+    public ResponseEntity<Trip> findTripById(@PathVariable int id) {
+        try {
+            Trip trip = tripService.findTripById(id);
+            return ResponseEntity.ok(trip);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping

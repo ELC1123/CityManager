@@ -3,6 +3,7 @@ package com.elcprojects.citymanager.controller;
 import com.elcprojects.citymanager.domain.City;
 import com.elcprojects.citymanager.service.CityService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +23,13 @@ public class CityController {
     }
 
     @GetMapping("/{id}")
-    public City findCityById(@PathVariable int id) {
-        return cityService.findCityById(id);
+    public ResponseEntity<City> findCityById(@PathVariable int id) {
+        try {
+            City city = cityService.findCityById(id);
+            return ResponseEntity.ok(city);
+        } catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
