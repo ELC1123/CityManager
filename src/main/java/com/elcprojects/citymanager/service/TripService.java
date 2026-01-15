@@ -24,6 +24,10 @@ public class TripService {
     }
 
     public Trip saveTrip(Trip trip) {
+        if(trip.getEndDate().isBefore(trip.getStartDate())) {
+            throw new IllegalArgumentException("End date cannot be before start date!");
+        }
+
         if(trip.getCity() != null && trip.getCity().getId() != 0) {
             City realCity = cityRepository.findById(trip.getCity().getId()).orElse(null);
             trip.setCity(realCity);
