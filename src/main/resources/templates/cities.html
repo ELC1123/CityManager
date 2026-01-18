@@ -16,6 +16,7 @@
                 <th>City Name</th>
                 <th>Country</th>
                 <th>Details</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +24,16 @@
                 <td th:text="${city.name}"></td>
                 <td th:text="${city.country}"></td>
                 <td th:text="${city.details}"></td>
+                <td>
+                    <a th:href="@{/edit-city/{id}(id=${city.id})}" style="text-decoration: none;">
+                        <button type="button">Edit</button>
+                    </a>
+                    <a th:href="@{/delete-city/{id}(id=${city.id})}" style="text-decoration: none;">
+                        <button type="button">Delete</button>
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
-
 </body>
 </html>

@@ -4,9 +4,7 @@ import com.elcprojects.citymanager.domain.City;
 import com.elcprojects.citymanager.service.CityService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class WebController {
@@ -33,5 +31,18 @@ public class WebController {
     public String saveCity(@ModelAttribute City city) {
         cityService.saveCity(city);
         return "redirect:/";
+    }
+
+    @GetMapping("/delete-city/{id}")
+    public String deleteCity(@PathVariable int id) {
+        cityService.deleteCityById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit-city/{id}")
+    public String showUpdateForm(@PathVariable int id, Model model) {
+        City city = cityService.findCityById(id);
+        model.addAttribute("city", city);
+        return "add-city";
     }
 }
