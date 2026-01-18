@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City Manager</title>
+</head>
+<body>
+    <h1>My City Bucket List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>City Name</th>
+                <th>Country</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="city : ${cities}">
+                <td th:text="${city.name}"></td>
+                <td th:text="${city.country}"></td>
+                <td th:text="${city.details}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
