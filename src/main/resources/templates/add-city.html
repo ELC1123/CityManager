@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add City</title>
+</head>
+<body>
+    <h1>Add a New Destination</h1>
+    <form action="/save-city" method="post" th:object="${city}">
+        <label>City Name</label>
+        <input type="text" th:field="*{name}"/><br><br>
+        <label>Country</label>
+        <input type="text" th:field="*{country}"/><br><br>
+        <label>Details</label>
+        <textarea th:field="*{details}"></textarea><br><br>
+        <button type="submit">Save City</button>
+    </form>
+</body>
+</html>
