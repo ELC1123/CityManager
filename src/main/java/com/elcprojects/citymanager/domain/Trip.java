@@ -42,7 +42,8 @@ public class Trip {
     private LocalDate endDate;
 
     @Column(name="rating")
-    private int rating;
+    @NotNull(message = "Rating is required")
+    private Integer rating;
 
     @Column(name="personalNotes")
     private String personalNotes;

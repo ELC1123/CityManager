@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Travel Log</title>
+</head>
+<body>
+    <h1>My Travel Log</h1>
+    <a href="/add-trips"><button>+ Log New Trip</button></a>
+    <a href="/"><button>View Cities</button></a>
+    <br><br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Rating</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="trip : ${trips}">
+                <td th:text="${trip.city.name}"></td>
+                <td th:text="${trip.startDate}"></td>
+                <td th:text="${trip.endDate}"></td>
+                <td th:text="${trip.rating}"></td>
+                <td th:text="${trip.personalNotes}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

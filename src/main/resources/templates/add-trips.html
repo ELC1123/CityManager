@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Trip</title>
+</head>
+<body>
+    <h1>Add a New Trip</h1>
+    <form action="/save-trip" method="post" th:object="${trip}">
+        <label>Select City</label><br>
+        <select th:field="*{city.id}" required>
+            <option value="">-- Pick a City--</option>
+            <option th:each="city : ${cities}"
+                    th:value="${city.id}"
+                    th:text="${city.name}"/>
+        </select>
+        <br><br>
+
+        <label>Start Date</label><br>
+        <input type="date" th:field="*{startDate}" required><br><br>
+
+        <label>End Date</label><br>
+        <input type="date" th:field="*{endDate}" required><br><br>
+
+        <label>Rating (1-5):</label>
+        <input type="number" th:field="*{rating}" min="1" max="5" required><br><br>
+
+        <label>Memories:</label><br>
+        <textarea th:field="*{personalNotes}" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+    <a href="/view-trips">Go back</a>
+</body>
+</html>
